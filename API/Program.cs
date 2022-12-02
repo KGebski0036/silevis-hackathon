@@ -1,3 +1,4 @@
+using API.Data;
 using API.Extensions;
 using API.Middleware;
 
@@ -16,6 +17,7 @@ app.UseMiddleware<ExceptionMiddleware>();
 
 app.UseCors(builder => builder.AllowAnyHeader().AllowAnyMethod()
     .WithOrigins("https://localhost:4200"));
+    
 
 app.UseAuthentication();
 app.UseAuthorization();
@@ -23,3 +25,4 @@ app.UseAuthorization();
 app.MapControllers();
 
 app.Run();
+

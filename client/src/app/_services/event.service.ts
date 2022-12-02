@@ -9,10 +9,11 @@ import { User } from '../_models/user';
 })
 export class EventService {
   baseUrl = 'https://localhost:5001/api/';
+
   
   constructor(private http: HttpClient) { }
 
   getEvents(model: any){
-    return this.http.get<Event>(this.baseUrl + 'events', model).subscribe();
+
   }
 }

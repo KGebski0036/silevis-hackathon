@@ -7,12 +7,17 @@ import { User } from '../_models/user';
 @Injectable({
   providedIn: 'root'
 })
-export class PinService {
+export class PinService
+{
   baseUrl = 'https://localhost:5001/api/';
-  
+  loadedPins: Pin[] = [];
+
   constructor(private http: HttpClient) { }
 
-  getPins(model: any){
-    return this.http.get<Pin>(this.baseUrl + 'pins', model).subscribe();
+  getPins()
+  {
+    return this.http.get<Pin[]>(this.baseUrl + 'pins').pipe(
+      map(response => { this.loadedPins = response; return response; })
+    );
   }
 }

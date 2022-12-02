@@ -6,7 +6,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { NavComponent } from './nav/nav.component';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HomeComponent } from './home/home.component';
 import { RegisterComponent } from './pages/register/register.component';
 import { MemberListComponent } from './members/member-list/member-list.component';
@@ -17,6 +17,8 @@ import { TestErrorComponent } from './errors/test-error/test-error.component';
 import { ErrorInterceptor } from './_interceptors/error.interceptor';
 import { NotFoundComponent } from './errors/not-found/not-found.component';
 import { ServerErrorComponent } from './errors/server-error/server-error.component';
+import { AddEventPageComponent } from './pages/addEvent/add-event-page/add-event-page.component';
+
 
 @NgModule({
   declarations: [
@@ -29,7 +31,8 @@ import { ServerErrorComponent } from './errors/server-error/server-error.compone
     ListsComponent,
     TestErrorComponent,
     NotFoundComponent,
-    ServerErrorComponent
+    ServerErrorComponent,
+    AddEventPageComponent
   ],
   imports: [
     BrowserAnimationsModule,
@@ -37,7 +40,8 @@ import { ServerErrorComponent } from './errors/server-error/server-error.compone
     AppRoutingModule,
     HttpClientModule,
     FormsModule,
-    SharedModule
+    SharedModule,
+    ReactiveFormsModule
   ],
   providers: [
     {provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true}

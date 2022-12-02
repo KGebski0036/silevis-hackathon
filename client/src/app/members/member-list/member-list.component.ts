@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Pin } from 'src/app/_models/pin';
 
 @Component({
   selector: 'app-member-list',
@@ -9,7 +10,16 @@ export class MemberListComponent implements OnInit {
 
   constructor() { }
 
+  testpinlist: Pin[] = [];
+
   ngOnInit(): void {
   }
+  /*
+  createPin(id: number, name: string, lat:number, lon: number){}
 
+  AddPin(pin: Pin)
+  {
+    this.testpinlist.push(pin)
+  }
+  */
 }

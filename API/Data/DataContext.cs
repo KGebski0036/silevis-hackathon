@@ -12,6 +12,7 @@ namespace API.Data
         }
 
         public DbSet<AppUser> Users { get; set; }
-        public DbSet<Pin> Pins { get; set; }
+        public DbSet<Pitch> Pitch { get; set; }
+        public DbSet<Event> Events { get; set; }
     }
 }

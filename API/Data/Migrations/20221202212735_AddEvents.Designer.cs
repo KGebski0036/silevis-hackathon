@@ -3,6 +3,7 @@ using System;
 using API.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -10,9 +11,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace API.Data.Migrations
 {
     [DbContext(typeof(DataContext))]
-    partial class DataContextModelSnapshot : ModelSnapshot
+    [Migration("20221202212735_AddEvents")]
+    partial class AddEvents
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder.HasAnnotation("ProductVersion", "7.0.0-rc.2.22472.11");
@@ -63,12 +66,9 @@ namespace API.Data.Migrations
                     b.Property<int>("PinId")
                         .HasColumnType("INTEGER");
 
-                    b.Property<int?>("PitchId")
-                        .HasColumnType("INTEGER");
-
                     b.HasKey("Id");
 
-                    b.HasIndex("PitchId");
+                    b.HasIndex("PinId");
 
                     b.ToTable("Events");
                 });
@@ -98,14 +98,11 @@ namespace API.Data.Migrations
                     b.ToTable("Photo");
                 });
 
-            modelBuilder.Entity("API.Entities.Pitch", b =>
+            modelBuilder.Entity("API.Entities.Pin", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("INTEGER");
-
-                    b.Property<string>("Adress")
-                        .HasColumnType("TEXT");
 
                     b.Property<double>("CoordLat")
                         .HasColumnType("REAL");
@@ -116,45 +113,12 @@ namespace API.Data.Migrations
                     b.Property<string>("Description")
                         .HasColumnType("TEXT");
 
-                    b.Property<int>("MaxPlayers")
-                        .HasColumnType("INTEGER");
-
                     b.Property<string>("Name")
                         .HasColumnType("TEXT");
 
-                    b.Property<int?>("PhotoId")
-                        .HasColumnType("INTEGER");
-
                     b.HasKey("Id");
 
-                    b.HasIndex("PhotoId");
-
-                    b.ToTable("Pitch");
-                });
-
-            modelBuilder.Entity("API.Entities.Reservation", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("INTEGER");
-
-                    b.Property<DateTime>("DateFrom")
-                        .HasColumnType("TEXT");
-
-                    b.Property<DateTime>("DateTo")
-                        .HasColumnType("TEXT");
-
-                    b.Property<string>("Name")
-                        .HasColumnType("TEXT");
-
-                    b.Property<int?>("PitchId")
-                        .HasColumnType("INTEGER");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("PitchId");
-
-                    b.ToTable("Reservation");
+                    b.ToTable("Pins");
                 });
 
             modelBuilder.Entity("API.Entities.AppUser", b =>
@@ -166,11 +130,13 @@ namespace API.Data.Migrations
 
             modelBuilder.Entity("API.Entities.Event", b =>
                 {
-                    b.HasOne("API.Entities.Pitch", "Pitch")
+                    b.HasOne("API.Entities.Pin", "Pin")
                         .WithMany()
-                        .HasForeignKey("PitchId");
+                        .HasForeignKey("PinId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
 
-                    b.Navigation("Pitch");
+                    b.Navigation("Pin");
                 });
 
             modelBuilder.Entity("API.Entities.Photo", b =>
@@ -178,22 +144,6 @@ namespace API.Data.Migrations
                     b.HasOne("API.Entities.AppUser", null)
                         .WithMany("Photos")
                         .HasForeignKey("AppUserId");
-                });
-
-            modelBuilder.Entity("API.Entities.Pitch", b =>
-                {
-                    b.HasOne("API.Entities.Photo", "Photo")
-                        .WithMany()
-                        .HasForeignKey("PhotoId");
-
-                    b.Navigation("Photo");
-                });
-
-            modelBuilder.Entity("API.Entities.Reservation", b =>
-                {
-                    b.HasOne("API.Entities.Pitch", null)
-                        .WithMany("Reservations")
-                        .HasForeignKey("PitchId");
                 });
 
             modelBuilder.Entity("API.Entities.AppUser", b =>
@@ -204,11 +154,6 @@ namespace API.Data.Migrations
             modelBuilder.Entity("API.Entities.Event", b =>
                 {
                     b.Navigation("Participants");
-                });
-
-            modelBuilder.Entity("API.Entities.Pitch", b =>
-                {
-                    b.Navigation("Reservations");
                 });
 #pragma warning restore 612, 618
         }

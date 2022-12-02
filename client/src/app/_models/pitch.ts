@@ -1,4 +1,5 @@
-export interface Pitch{
-    id:number;
-    type:number;   
+export interface Pitch
+{
+    id: number;
+    type: number;
 }

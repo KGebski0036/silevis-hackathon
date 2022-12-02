@@ -1,3 +1,6 @@
+using API.Extensions;
+using System.Security.Cryptography.X509Certificates;
+
 namespace API.Entities
 {
     public class AppUser
@@ -10,5 +13,11 @@ namespace API.Entities
         public string Nickname { get; set; }
         public DateTime Created { get; set; } = DateTime.Now;
         public List<Photo> Photos { get; set; } = new List<Photo>();
+        public string Gender { get; set; }
+        public string Country { get; set; }
+        public int GetAge()
+        {
+            return DateOfBirth.CalculateAge();
+        }
     }
 }

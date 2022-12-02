@@ -3,6 +3,7 @@ using System;
 using API.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -10,9 +11,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace API.Data.Migrations
 {
     [DbContext(typeof(DataContext))]
-    partial class DataContextModelSnapshot : ModelSnapshot
+    [Migration("20221202223721_UsersControllers")]
+    partial class UsersControllers
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder.HasAnnotation("ProductVersion", "7.0.0-rc.2.22472.11");
@@ -35,12 +38,9 @@ namespace API.Data.Migrations
                     b.Property<int?>("EventId")
                         .HasColumnType("INTEGER");
 
-<<<<<<< HEAD
-=======
                     b.Property<string>("Gender")
                         .HasColumnType("TEXT");
 
->>>>>>> b6a8a1b (FIX ;))
                     b.Property<string>("Nickname")
                         .HasColumnType("TEXT");
 
@@ -191,22 +191,6 @@ namespace API.Data.Migrations
                         .IsRequired();
 
                     b.Navigation("AppUser");
-                });
-
-            modelBuilder.Entity("API.Entities.Pitch", b =>
-                {
-                    b.HasOne("API.Entities.Photo", "Photo")
-                        .WithMany()
-                        .HasForeignKey("PhotoId");
-
-                    b.Navigation("Photo");
-                });
-
-            modelBuilder.Entity("API.Entities.Reservation", b =>
-                {
-                    b.HasOne("API.Entities.Pitch", null)
-                        .WithMany("Reservations")
-                        .HasForeignKey("PitchId");
                 });
 
             modelBuilder.Entity("API.Entities.Pitch", b =>

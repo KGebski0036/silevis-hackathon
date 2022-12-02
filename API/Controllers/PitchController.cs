@@ -22,7 +22,7 @@ namespace API.Controllers
         [HttpGet]
         public async Task<ActionResult<IEnumerable<Pitch>>> GetPitch()
         {
-            var Pitch = await _context.Pitch.ToListAsync();
+            var Pitch = await _context.Pitches.ToListAsync();
 
             return Pitch;
         }
@@ -32,7 +32,7 @@ namespace API.Controllers
         {
             if (string.IsNullOrEmpty(newPitch.Name)) return BadRequest("The name can't be empty");
 
-            await _context.Pitch.AddAsync(new Pitch()
+            await _context.Pitches.AddAsync(new Pitch()
             {
                 Name = newPitch.Name,
                 Description = newPitch.Description,

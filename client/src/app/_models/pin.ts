@@ -1,7 +1,8 @@
-export interface Pin{
-    id:number;
+export interface Pin
+{
+    id: number;
     name: string;
-    description:string;
-    coordLat:number;
-    coordLon:number;    
+    description: string;
+    coordLat: number;
+    coordLon: number;
 }

@@ -1,0 +1,17 @@
+<h3>Add new Event</h3>
+
+<form [formGroup]="addEvent">
+
+    <label for="dateOfEvent">When do You want to play</label>
+    <input id="dateOfEvent" type="date" formControlName="dateOfEvent">
+
+    <label for="timeOfEvent">What time does the event start</label>
+    <input id="timeOfEvent" type="time" formControlName="timeOfEvent">
+
+    <label for="playersRequired">How many players do you need</label>
+    <input id="playersRequired" type="number" formControlName="playersRequired">
+
+    <input id="submitEvent" type="submit" formControlName="submitEvent">
+
+</form>
+

@@ -26,6 +26,7 @@ import { EventListComponent } from './pages/eventList/event-list/event-list.comp
 import { LearnMoreComponent } from './pages/learnMore/learn-more/learn-more.component';
 
 import { MemberCardComponent } from './members/member-card/member-card.component';
+import { EventCardComponent } from './pitch/event-card/event-card.component';
 
 
 
@@ -47,7 +48,8 @@ import { MemberCardComponent } from './members/member-card/member-card.component
     PitchMapComponent,
     EventListComponent,
     LearnMoreComponent,
-    MemberCardComponent
+    MemberCardComponent,
+    EventCardComponent
 
   ],
   imports: [

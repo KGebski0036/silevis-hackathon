@@ -1,7 +1,9 @@
+import { HttpBackend } from '@angular/common/http';
 import { isNgTemplate } from '@angular/compiler';
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
+import { ToastrModule, ToastrService } from 'ngx-toastr';
 import { GameEvent } from 'src/app/_models/event';
 import { EventService } from 'src/app/_services/event.service';
 
@@ -14,7 +16,7 @@ import { EventService } from 'src/app/_services/event.service';
 })
 export class AddEventPageComponent implements OnInit {
 
-  constructor(private route: ActivatedRoute, private service: EventService) { }
+  constructor(private toastr:ToastrService, private router:Router, private route: ActivatedRoute, private service: EventService) { }
 
   pitchId?: number;
 
@@ -29,27 +31,41 @@ export class AddEventPageComponent implements OnInit {
     })
   }
 
-  addEvent = new FormGroup({
-    maxPlayers: new FormControl('', [Validators.min(1), Validators.max(100)]),
-    dateOfEvent: new FormControl('', [Validators.required, Validators.min(Date.now())]),
+  eventForm = new FormGroup({
+
+    description: new FormControl('', [Validators.minLength(10), Validators.maxLength(1000)]),
+    playersRequired: new FormControl(0, [Validators.required, Validators.min(1), Validators.max(100)]),
+    //maxPlayers: new FormControl(0, [Validators.min(1), Validators.max(100)]),
+    /*dateOfEvent: new FormControl('', [Validators.required, Validators.min(Date.now())]),
     timeOfEvent: new FormControl('', [Validators.required])
+    */
   });
 
   onSubmit() {
-    let ev: GameEvent = { pitchId: this.pitchId }
+    let ev: GameEvent = {pitchId: this.pitchId};
 
-    let max = this.addEvent.value.maxPlayers;
-    if (max != null && parseInt(max)) {
-     ev.maxPlayers = parseInt(max);
-    }
 
-    let date = this.addEvent.value.dateOfEvent;
-    let hour = this.addEvent.value.timeOfEvent;
-    if(date != null && hour != null) {
-      ev.dateFrom = new Date(date);
-    }
-    this.service.addEvent(ev);
+    if (this.eventForm.value.description)
+    ev.description = this.eventForm.value.description;
 
+    if (this.eventForm.value.playersRequired)
+    ev.maxPlayers = this.eventForm.value.playersRequired;
+
+    this.service.addEvent(ev).subscribe({
+      next: () => {
+        this.toastr.success("Added successfully!");
+        this.router.navigateByUrl('/');
+      },
+      error: () => {this.toastr.error("Failed to add.")}
+    });
+    
+    
+    /*() => {
+        this.toastr.success("Added a new event!");
+        this.router.navigateByUrl('/');
+    }, (err) => {
+        this.toastr.error("Failed! " + err);
+    });*/
   }
 
 }

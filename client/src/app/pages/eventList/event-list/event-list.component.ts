@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { GameEvent } from 'src/app/_models/event';
 import { EventService } from 'src/app/_services/event.service';
 
 @Component({
@@ -14,6 +15,6 @@ export class EventListComponent implements OnInit {
     this.service.getEvents().subscribe(o => this.events = o)
   }
 
-  events?:Event[]
+  events?:GameEvent[]
 
 }

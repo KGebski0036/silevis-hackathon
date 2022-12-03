@@ -5,10 +5,16 @@
         <ul class="navbar-nav me-auto mb-2 mb-md-0">
             <ng-container *ngIf="accountService.currentUser$ | async">
                 <li class="nav-item">
-                    <a class="nav-link text-" routerLink="/members" routerLinkActive="active">Inni użytkownicy</a>
+                    <a class="nav-link text-" routerLink="/members" routerLinkActive="active">Other Users</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" routerLink="/lists" routerLinkActive="active">Boiska w okolicy</a>
+                    <a class="nav-link" routerLink="/lists" routerLinkActive="active">Nearby Pitches</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" routerLink="events" routerLinkActive="active">Events List</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" routerLink="learn" routerLinkActive="active">What is Team Finder?</a>
                 </li>
             </ng-container>
             <li class="nav-item">

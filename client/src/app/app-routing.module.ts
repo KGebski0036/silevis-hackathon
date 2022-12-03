@@ -11,6 +11,8 @@ import { AuthGuard } from './_guards/auth.guard';
 import { PitchDetailComponent } from './pitch/pitch-detail/pitch-detail.component';
 import { MapViewComponent } from './map/map-view/map-view.component';
 import { PitchMapComponent } from './pitch/pitch-map/pitch-map.component';
+import { EventListComponent } from './pages/eventList/event-list/event-list.component';
+import { LearnMoreComponent } from './pages/learnMore/learn-more/learn-more.component';
 
 const routes: Routes = [
   {path: '', component: HomeComponent},
@@ -22,6 +24,8 @@ const routes: Routes = [
       {path: 'members/:id', component: MemberDetailComponent},
       {path: 'pitch/detail/:id', component: PitchDetailComponent},
       {path: 'lists', component: PitchMapComponent},
+      {path: 'events', component: EventListComponent},
+      {path: 'learn', component: LearnMoreComponent},
     ]
   },
   {path: 'errors', component: TestErrorComponent},

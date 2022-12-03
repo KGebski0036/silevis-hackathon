@@ -1,6 +1,8 @@
 using API.Data;
+using API.DTOs;
 using API.Entities;
 using API.Interfaces;
+using AutoMapper;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
@@ -10,38 +12,32 @@ namespace API.Controllers
     [Authorize]
     public class UsersController : BaseApiController
     {
-<<<<<<< HEAD
-        private readonly IUserRepository _userRepository;
-        public UsersController(IUserRepository userRepository)
-=======
+
         private readonly IUserRepository _context;
-        public UsersController(IUserRepository context)
->>>>>>> Karol
+        private readonly IMapper _mapper;
+
+        public UsersController(IUserRepository context, IMapper mapper)
         {
-            _userRepository = userRepository;
+            _mapper = mapper;
+            _context = context;
         }
 
         [AllowAnonymous]
         [HttpGet]
         public async Task<ActionResult<IEnumerable<AppUser>>> GetUsers()
         {
-<<<<<<< HEAD
-            return Ok(await _userRepository.GetAllUsersAsync());
+            var users = await _context.GetPlayersAsync();
 
-=======
-            return Ok(await _context.GetAllUsersAsync());
->>>>>>> Karol
+
+            return Ok(users);
         }
 
         [HttpGet("{username}")]
 
-        public async Task<ActionResult<AppUser>> GetUser(string username)
+        public async Task<ActionResult<PlayerDto>> GetUser(string username)
         {
-<<<<<<< HEAD
-            return await _userRepository.GetUserByUserNameAsync(username);
-=======
-            return await _context.GetUserByUserNameAsync(username);
->>>>>>> Karol
+            return await _context.GetPlayerAsync(username);
+
         }
     }
 }

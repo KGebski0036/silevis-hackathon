@@ -1,5 +1,8 @@
-﻿using API.Entities;
+﻿using API.DTOs;
+using API.Entities;
 using API.Interfaces;
+using AutoMapper;
+using AutoMapper.QueryableExtensions;
 using Microsoft.EntityFrameworkCore;
 using SQLitePCL;
 using System.Reflection.Metadata.Ecma335;
@@ -9,19 +12,32 @@ namespace API.Data
     public class UserRepository : IUserRepository
     {
         private readonly DataContext _context;
+        private readonly IMapper _mapper;
 
-        public UserRepository(DataContext context)
+        public UserRepository(DataContext context, IMapper mapper)
         {
+            _mapper = mapper;
             _context=context;
         }
 
         public async Task<IEnumerable<AppUser>> GetAllUsersAsync()
         {
-<<<<<<< HEAD
-            return await _context.Users.Include(p =>p.Photos).ToListAsync();
-=======
             return await _context.Users.Include(p => p.Photos).ToListAsync();
->>>>>>> Karol
+
+        }
+
+        public async Task<IEnumerable<PlayerDto>> GetPlayersAsync()
+        {
+            return await _context.Users
+                .ProjectTo<PlayerDto>(_mapper.ConfigurationProvider)
+                .ToListAsync();
+        }
+
+        public async Task<PlayerDto> GetPlayerAsync(string username)
+        {
+            return await _context.Users
+                .Where(x => x.UserName == username)
+                .ProjectTo<PlayerDto>(_mapper.ConfigurationProvider).SingleOrDefaultAsync();
         }
 
         public async Task<AppUser> GetUserByIdAsync(int id)

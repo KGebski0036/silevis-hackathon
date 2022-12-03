@@ -1,4 +1,5 @@
-﻿using API.Entities;
+﻿using API.DTOs;
+using API.Entities;
 
 namespace API.Interfaces
 {
@@ -9,5 +10,7 @@ namespace API.Interfaces
         Task<IEnumerable<AppUser>> GetAllUsersAsync();
         Task<AppUser> GetUserByIdAsync(int id);
         Task<AppUser> GetUserByUserNameAsync(string username);
+        Task<IEnumerable<PlayerDto>> GetPlayersAsync();
+        Task<PlayerDto> GetPlayerAsync(string username);
     }
 }

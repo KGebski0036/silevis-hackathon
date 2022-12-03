@@ -39,7 +39,13 @@ namespace API.Controllers
                 .Where(p => p.Id == pitchId)
                 .ProjectTo<PitchDto>(_mapper.ConfigurationProvider).SingleOrDefaultAsync();
         }
+        [HttpGet("events/{id}")]
+        public async Task<ActionResult<IEnumerable<Event>>> GetEventsForPitch(int pitchId)
+        {
+            return await _context.Pitches.Where(p => p.Id == pitchId).FirstOrDefaultAsync().Events.ToList();
 
+        }
+            
         [HttpPost]
         public async Task<ActionResult<PitchDto>> AddPitch(PitchDto newPitch)
         {

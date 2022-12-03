@@ -13,7 +13,7 @@ namespace API.DTOs
         public string Description { get; set; }
         public double CoordLat { get; set; }
         public double CoordLon { get; set; }
-        public List<Reservation> Reservations { get; set; }
+        public List<Event> Events { get; set; }
         public Photo Photo { get; set; }
     }
 }

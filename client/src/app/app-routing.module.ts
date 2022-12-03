@@ -14,6 +14,7 @@ import { PitchMapComponent } from './pitch/pitch-map/pitch-map.component';
 import { AddEventPageComponent } from './pages/addEvent/add-event-page/add-event-page.component';
 import { EventListComponent } from './pages/eventList/event-list/event-list.component';
 import { LearnMoreComponent } from './pages/learnMore/learn-more/learn-more.component';
+import { EditProfileComponent } from './pages/edit-profile/edit-profile.component';
 
 
 const routes: Routes = [
@@ -29,6 +30,7 @@ const routes: Routes = [
       {path: 'lists', component: PitchMapComponent},
       {path: 'events', component: EventListComponent},
       {path: 'learn', component: LearnMoreComponent},
+      {path: 'editprofile', component: EditProfileComponent},
     ]
   },
   {path: 'errors', component: TestErrorComponent},

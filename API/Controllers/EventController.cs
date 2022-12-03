@@ -33,8 +33,7 @@ namespace API.Controllers
             var ev = await _context.Events.Where(x => x.Id == dto.eventId).Include(x => x.Participants).FirstOrDefaultAsync();
             var user = await _context.Users.Where(x=>x.UserName== dto.currentUserName).FirstOrDefaultAsync();
 
-            if (user == null) return BadRequest();
-            if (ev == null) return BadRequest();
+            if (user == null || ev == null) return BadRequest();
 
             if (ev.Participants.Contains(user)) return BadRequest("You are already signed up.");
 

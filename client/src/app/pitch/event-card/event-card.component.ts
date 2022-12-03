@@ -1,6 +1,10 @@
+import { ThisReceiver } from '@angular/compiler';
 import { Component, Input, OnInit } from '@angular/core';
+import { enableDebugTools } from '@angular/platform-browser';
 import { ToastrService } from 'ngx-toastr';
 import { GameEvent } from 'src/app/_models/event';
+import { User } from 'src/app/_models/user';
+import { AccountService } from 'src/app/_services/account.service';
 import { EventService } from 'src/app/_services/event.service';
 
 @Component({
@@ -12,6 +16,9 @@ export class EventCardComponent implements OnInit {
 
   @Input()
   ev?: GameEvent;
+
+  @Input()
+  currentUser?: User;
 
   @Input()
   hidePitch: boolean = false;

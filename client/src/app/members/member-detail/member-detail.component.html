@@ -1,7 +1,7 @@
 <div class="row" *ngIf="member">
     <div class="col-4">
         <div class="card">
-            <img src="{{member.photoUrl || './assets/logoTeamFInder2.png'}}" alt="{{member.userName}}"
+            <img [src]="member.photoUrl || './assets/default-photo.jpg'" [alt]="member.userName"
                 class="card-img-top img-thumbnail">
             <div class="card-body">
                 <div>

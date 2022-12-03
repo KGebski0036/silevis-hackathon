@@ -30,4 +30,8 @@ export class MembersService {
       })
     }
   }
+
+  updateMember(member: Member) {
+    return this.http.put<Member>(this.baseUrl + 'users/', member, this.getHttpOptions());
+  }
 }

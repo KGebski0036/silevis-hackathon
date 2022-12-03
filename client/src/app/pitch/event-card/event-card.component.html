@@ -6,7 +6,7 @@
         </div>
     </div>
     <div class="card-body">
-        <p class="text-info">{{ev.participants?.length ?? 0}}/{{ev.maxPlayers}} osób</p>
+        <p class="text-info">{{ev.participants?.length || 0}}/{{ev.maxPlayers}} osób</p>
         <h6>Opis</h6>
         <p>{{ev.description}}</p>
         <button class="btn btn-success" (click)="onEventJoinClick()">Dołącz!</button>

@@ -7,7 +7,7 @@ namespace API.Helpers
 {
     public class AutoMapperProfiles : Profile
     {
-        protected AutoMapperProfiles()
+        public AutoMapperProfiles()
         {
             CreateMap<AppUser, PlayerDto>()
                 .ForMember(dest => dest.PhotoUrl,

@@ -22,6 +22,19 @@ namespace API.Controllers
             _context = context;
         }
 
+        [HttpPut]
+        public async Task<ActionResult<AppUser>> PutUser([FromBody] AppUser user)
+        {
+            var oldUser = await _context.GetUserByUserNameAsync(user.UserName);
+            if (oldUser == null) { return BadRequest(); }
+
+            user.Id = oldUser.Id;
+            _context.Update(user);
+            await _context.SaveAllAsync();
+            return Ok(user);
+        }
+            
+        
         [AllowAnonymous]
         [HttpGet]
         public async Task<ActionResult<IEnumerable<AppUser>>> GetUsers()

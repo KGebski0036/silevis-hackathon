@@ -23,6 +23,7 @@ export class PitchDetailComponent implements OnInit{
 
   constructor(private router: Router) {
   }
+  
   ngOnInit(): void {
   }
 

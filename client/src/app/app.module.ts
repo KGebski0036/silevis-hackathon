@@ -27,6 +27,7 @@ import { LearnMoreComponent } from './pages/learnMore/learn-more/learn-more.comp
 
 import { MemberCardComponent } from './members/member-card/member-card.component';
 import { EventCardComponent } from './pitch/event-card/event-card.component';
+import { EditProfileComponent } from './pages/edit-profile/edit-profile.component';
 
 
 
@@ -49,7 +50,8 @@ import { EventCardComponent } from './pitch/event-card/event-card.component';
     EventListComponent,
     LearnMoreComponent,
     MemberCardComponent,
-    EventCardComponent
+    EventCardComponent,
+    EditProfileComponent
 
   ],
   imports: [

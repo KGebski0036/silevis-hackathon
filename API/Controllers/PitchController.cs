@@ -45,7 +45,7 @@ namespace API.Controllers
         [HttpGet("events/{pitchId}")]
         public async Task<ActionResult<IEnumerable<Event>>> GetEventsForPitch([FromRoute] int pitchId) {
 
-            return await _context.Events.Where(x => x.PitchId == pitchId).ToListAsync();
+            return await _context.Events.Where(x => x.PitchId == pitchId).Include(x=>x.Participants).ToListAsync();
             
         }
             

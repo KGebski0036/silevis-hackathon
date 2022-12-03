@@ -27,14 +27,28 @@ namespace API.Controllers
             await _context.SaveChangesAsync();
             return Ok(ev);
         }
+        
+        [HttpPost("join")]
+        public async Task<ActionResult> JoinEvent(JoinEventDto dto) {
+            var ev = await _context.Events.Where(x => x.Id == dto.eventId).Include(x => x.Participants).FirstOrDefaultAsync();
+            var user = await _context.Users.Where(x=>x.UserName== dto.currentUserName).FirstOrDefaultAsync();
+
+            if (user == null) return BadRequest();
+            if (ev == null) return BadRequest();
+
+            if (ev.Participants.Contains(user)) return BadRequest("You are already signed up.");
+
+            ev.Participants.Add(user);
+
+            await _context.SaveChangesAsync();
+            return Ok();
+        }
 
 
         [HttpGet]
         public async Task<ActionResult<IEnumerable<Event>>> GetEvents()
         {
-            var Events = await _context.Events.ToListAsync();
-
-            return Events;
+            return await _context.Events.Include(x=>x.Pitch).Include(x=>x.Participants).ToListAsync();
         }
         [HttpGet("{id}")]
 
@@ -42,6 +56,8 @@ namespace API.Controllers
         {
             return await _context.Events
                 .Where(p => p.Id == eventId)
+                .Include(x=>x.Pitch)
+                .Include(x=>x.Participants)
                 .ProjectTo<EventDto>(_mapper.ConfigurationProvider).SingleOrDefaultAsync();
         }
     }

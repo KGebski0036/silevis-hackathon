@@ -1,5 +1,6 @@
 using API.Extensions;
 using System.Security.Cryptography.X509Certificates;
+using System.Text.Json.Serialization;
 
 namespace API.Entities
 {
@@ -13,6 +14,10 @@ namespace API.Entities
         public string Nickname { get; set; }
         public DateTime Created { get; set; } = DateTime.Now;
         public List<Photo> Photos { get; set; } = new List<Photo>();
+
+        [JsonIgnore]
+        public List<Event> RegisteredEvents { get; set; } = new List<Event>();
+
         public string Gender { get; set; }
         public string Country { get; set; }
         //public int GetAge()

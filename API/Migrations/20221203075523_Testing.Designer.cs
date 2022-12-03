@@ -3,6 +3,7 @@ using System;
 using API.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -10,9 +11,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace API.Migrations
 {
     [DbContext(typeof(DataContext))]
-    partial class DataContextModelSnapshot : ModelSnapshot
+    [Migration("20221203075523_Testing")]
+    partial class Testing
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder.HasAnnotation("ProductVersion", "7.0.0-rc.2.22472.11");
@@ -32,6 +35,9 @@ namespace API.Migrations
                     b.Property<DateOnly>("DateOfBirth")
                         .HasColumnType("TEXT");
 
+                    b.Property<int?>("EventId")
+                        .HasColumnType("INTEGER");
+
                     b.Property<string>("Gender")
                         .HasColumnType("TEXT");
 
@@ -48,6 +54,8 @@ namespace API.Migrations
                         .HasColumnType("TEXT");
 
                     b.HasKey("Id");
+
+                    b.HasIndex("EventId");
 
                     b.ToTable("Users");
                 });
@@ -136,19 +144,11 @@ namespace API.Migrations
                     b.ToTable("Pitches");
                 });
 
-            modelBuilder.Entity("AppUserEvent", b =>
+            modelBuilder.Entity("API.Entities.AppUser", b =>
                 {
-                    b.Property<int>("ParticipantsId")
-                        .HasColumnType("INTEGER");
-
-                    b.Property<int>("RegisteredEventsId")
-                        .HasColumnType("INTEGER");
-
-                    b.HasKey("ParticipantsId", "RegisteredEventsId");
-
-                    b.HasIndex("RegisteredEventsId");
-
-                    b.ToTable("AppUserEvent");
+                    b.HasOne("API.Entities.Event", null)
+                        .WithMany("Participants")
+                        .HasForeignKey("EventId");
                 });
 
             modelBuilder.Entity("API.Entities.Event", b =>
@@ -180,24 +180,14 @@ namespace API.Migrations
                     b.Navigation("Photo");
                 });
 
-            modelBuilder.Entity("AppUserEvent", b =>
-                {
-                    b.HasOne("API.Entities.AppUser", null)
-                        .WithMany()
-                        .HasForeignKey("ParticipantsId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.HasOne("API.Entities.Event", null)
-                        .WithMany()
-                        .HasForeignKey("RegisteredEventsId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-                });
-
             modelBuilder.Entity("API.Entities.AppUser", b =>
                 {
                     b.Navigation("Photos");
+                });
+
+            modelBuilder.Entity("API.Entities.Event", b =>
+                {
+                    b.Navigation("Participants");
                 });
 
             modelBuilder.Entity("API.Entities.Pitch", b =>

@@ -12,12 +12,5 @@ export class MemberListComponent implements OnInit {
 
   ngOnInit(): void {
   }
-  /*
-  createPin(id: number, name: string, lat:number, lon: number){}
 
-  AddPin(pin: Pin)
-  {
-    this.testpinlist.push(pin)
-  }
-  */
 }

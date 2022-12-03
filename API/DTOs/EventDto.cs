@@ -2,7 +2,7 @@
 
 namespace API.DTOs
 {
-    public class EventDTO
+    public class EventDto
     {
         public int Id { get; set; }
         public int PinId { get; set; }

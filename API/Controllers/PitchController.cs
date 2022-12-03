@@ -42,8 +42,7 @@ namespace API.Controllers
         [HttpGet("events/{id}")]
         public async Task<ActionResult<IEnumerable<Event>>> GetEventsForPitch(int pitchId)
         {
-            return await _context.Pitches.Where(p => p.Id == pitchId).FirstOrDefaultAsync().Events.ToList();
-
+            return (await _context.Pitches.Where(p => p.Id == pitchId).FirstOrDefaultAsync()).Events.ToList();
         }
             
         [HttpPost]

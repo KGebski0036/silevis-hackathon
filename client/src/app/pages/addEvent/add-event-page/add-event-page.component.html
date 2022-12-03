@@ -1,16 +1,16 @@
-<div *ngIf="pitchId != null">
-<h3>Add new Event for pitch #{{pitchId}}</h3>
+<div style="margin-top: 300px;" *ngIf="pitche">
 
-<form class="form" [formGroup]="eventForm" (ngSubmit)="onSubmit()">
-    <div class="form-group">
-        <label for="description">Describe the event:</label>
-        <input type="text" class="form-control" formControlName="description" id="description">
-    </div>
-    <div class="form-group">
-    <label for="playersRequired">What is the player limit?</label>
-    <input id="playersRequired" class="form-control" type="number" formControlName="maxPlayers">
-    </div>
-    <button type="submit" class="btn btn-primary mt-3">Host an event!</button>
-</form>
+    <h3>Add new Event for pitch #{{pitche.name}}</h3>
+
+    <form class="form" [formGroup]="eventForm" (ngSubmit)="onSubmit()">
+        <div class="form-group">
+            <label for="description">Describe the event:</label>
+            <input type="text" class="form-control" formControlName="description" id="description">
+        </div>
+        <div class="form-group">
+            <label for="playersRequired">What is the player limit?</label>
+            <input id="playersRequired" class="form-control" type="number" formControlName="maxPlayers">
+        </div>
+        <button type="submit" class="btn btn-primary mt-3">Host an event!</button>
+    </form>
 </div>
-

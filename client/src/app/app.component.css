@@ -1,0 +1,9 @@
+footer{
+    min-height:130px;
+    width:100%;
+    background-image: linear-gradient(#62c462, #3fa33f);
+    position: fixed;
+    bottom:0;
+    box-shadow: 5px -5px 20px 1px #888888;
+    z-index: 90909;
+}

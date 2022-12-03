@@ -63,11 +63,11 @@ export class MapViewComponent implements OnInit, AfterViewInit {
       });
 
     let markers: L.Marker[] = pitches.map(pitch => {
-      let marker = L.marker([pitch.coordLat, pitch.coordLon], {icon: icon, })
+      let marker = L.marker([pitch.coordLat, pitch.coordLon], {icon: icon,})
       marker.addEventListener("click", () => { this.onPitchClicked(pitch); });
       return marker;
     })
-    markers.forEach(marker => marker.addTo(this.map)); /*bindPopup() do badge'a przy ikonach*/
+    markers.forEach(marker => marker.addTo(this.map));
   }
 
 }

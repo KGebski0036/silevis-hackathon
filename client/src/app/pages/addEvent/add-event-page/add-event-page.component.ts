@@ -5,7 +5,9 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ToastrModule, ToastrService } from 'ngx-toastr';
 import { GameEvent } from 'src/app/_models/event';
+import { Pitch } from 'src/app/_models/pitch';
 import { EventService } from 'src/app/_services/event.service';
+import { PitchService } from 'src/app/_services/pitch.service';
 
 
 
@@ -16,9 +18,9 @@ import { EventService } from 'src/app/_services/event.service';
 })
 export class AddEventPageComponent implements OnInit {
 
-  constructor(private toastr:ToastrService, private router:Router, private route: ActivatedRoute, private service: EventService) { }
+  constructor(private toastr:ToastrService, private router:Router, private route: ActivatedRoute, private service: EventService, private pitchService: PitchService) { }
 
-  pitchId?: number;
+  pitche?: Pitch;
 
 
   ngOnInit(): void {
@@ -26,8 +28,12 @@ export class AddEventPageComponent implements OnInit {
       let param = params.get('id');
       if (param == null) return;
       let id = parseInt(param);
+      debugger
       if (isNaN(id)) return;
-      this.pitchId = id;
+      this.pitchService.getPitchById(id).subscribe(pitch => {
+        this.pitche = pitch
+        
+      });
     })
   }
 
@@ -35,14 +41,13 @@ export class AddEventPageComponent implements OnInit {
 
     description: new FormControl('', [Validators.minLength(10), Validators.maxLength(1000)]),
     playersRequired: new FormControl(0, [Validators.required, Validators.min(1), Validators.max(100)]),
-    //maxPlayers: new FormControl(0, [Validators.min(1), Validators.max(100)]),
     /*dateOfEvent: new FormControl('', [Validators.required, Validators.min(Date.now())]),
     timeOfEvent: new FormControl('', [Validators.required])
     */
   });
 
   onSubmit() {
-    let ev: GameEvent = {pitchId: this.pitchId};
+    let ev: GameEvent = {pitchId: this.pitche!.id};
 
 
     if (this.eventForm.value.description)
@@ -59,13 +64,6 @@ export class AddEventPageComponent implements OnInit {
       error: () => {this.toastr.error("Failed to add.")}
     });
     
-    
-    /*() => {
-        this.toastr.success("Added a new event!");
-        this.router.navigateByUrl('/');
-    }, (err) => {
-        this.toastr.error("Failed! " + err);
-    });*/
   }
 
 }

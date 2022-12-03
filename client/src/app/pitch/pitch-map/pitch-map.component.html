@@ -1,6 +1,6 @@
 <app-map-view (pitchSelected)="openDetails($event)"></app-map-view>
 <app-off-canvas-backdrop *ngIf="selectedPitch" (dismiss)="closeDetails()"></app-off-canvas-backdrop>
-<div class="offcanvas offcanvas-end "  style="margin-top:150px;" [ngClass]="{'show' : selectedPitch}" tabindex="-1" id="offcanvas" aria-labelledby="offcanvasLabel" #detailsOffcanvas>
+<div class="offcanvas offcanvas-end "  style="padding-bottom:140px; padding-top: 190px;" [ngClass]="{'show' : selectedPitch}" tabindex="-1" id="offcanvas" aria-labelledby="offcanvasLabel" #detailsOffcanvas>
   <div class="offcanvas-header">
     <button type="button" (click)="closeDetails()" class="btn-close text-reset" aria-label="Close"></button>
   </div>

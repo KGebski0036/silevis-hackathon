@@ -33,10 +33,10 @@ namespace API.Controllers
 
         [HttpGet("{id}")]
 
-        public async Task<ActionResult<PitchDto>> GetPitch(int pitchId)
+        public async Task<ActionResult<PitchDto>> GetPitch(int id)
         {
             return await _context.Pitches
-                .Where(p => p.Id == pitchId)
+                .Where(p => p.Id == id)
                 .ProjectTo<PitchDto>(_mapper.ConfigurationProvider).SingleOrDefaultAsync();
         }
 

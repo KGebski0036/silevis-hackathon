@@ -1,6 +1,9 @@
 <div class="card m-2" *ngIf="ev">
     <div class="card-header">
-        <h5>Wydarzenie #{{ev.id}}</h5>
+        <div class="row">
+            <h5>Wydarzenie #{{ev.id}}</h5>
+            <h6 class="text-muted">{{ev.dateFrom}}</h6>
+        </div>
     </div>
     <div class="card-body">
         <p class="text-info">{{ev.participants?.length ?? 0}}/{{ev.maxPlayers}} osób</p>

@@ -49,7 +49,7 @@
 
 .nav-link
 {
-    width: 250px;
+    width: fit-content;
     text-decoration:none;
     color:white;
 }

@@ -16,7 +16,6 @@ export class AddEventPageComponent implements OnInit {
   }
 
   addEvent = new FormGroup({
-
     playersRequired: new FormControl('', [Validators.min(1), Validators.max(100)]),
     dateOfEvent: new FormControl('', [Validators.required, Validators.min(Date.now())]),
     timeOfEvent: new FormControl('', [Validators.required])

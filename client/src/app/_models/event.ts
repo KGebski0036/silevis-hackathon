@@ -1,6 +1,6 @@
 import { User } from './user';
 
-export interface Event
+export interface GameEvent
 {
     id: number;
     idPin: number;

@@ -9,9 +9,9 @@
         </div>
     </div>
 
-    <div class="card m-2">
+    <div class="card m-2" *ngFor="let ev of events">
         <div class="card-header">
-            <h5>Wydarzenie x</h5>
+            <h5>Wydarzenie #{{ev.id}}</h5>
         </div>
         <div class="card-body">
             <h6>Czas</h6>
@@ -27,40 +27,6 @@
         </div>
     </div>
 
-    <div class="card m-2">
-            <div class="card-header">
-                <h5>Wydarzenie x</h5>
-            </div>
-            <div class="card-body">
-                <h6>Czas</h6>
-                <p>19:19</p>
-                <h6>Opis</h6>
-                <p>Fajnie będzie, zapraszam</p>
-
-                <h6>Autor</h6>
-                <p>Tomasz Trąbalski</p>
-
-                <button class="btn btn-info">Info</button>
-                <button class="btn btn-success">Dołącz!</button>
-            </div>
-    </div>
-    <div class="card m-2">
-            <div class="card-header">
-                <h5>Wydarzenie x</h5>
-            </div>
-            <div class="card-body">
-                <h6>Czas</h6>
-                <p>19:19</p>
-                <h6>Opis</h6>
-                <p>Fajnie będzie, zapraszam</p>
-
-                <h6>Autor</h6>
-                <p>Tomasz Trąbalski</p>
-
-                <button class="btn btn-info">Info</button>
-                <button class="btn btn-success">Dołącz!</button>
-            </div>
-    </div>
 
     <button class="btn btn-block btn-info m-2">Dodaj wydarzenie</button>
 </div>

@@ -8,7 +8,7 @@
         public string Description { get; set; }
         public double CoordLat { get; set; }
         public double CoordLon { get; set; }
-        public List<Event> Events { get; set; }
+        public List<Event> Events { get; set; } = new List<Event>();
         public Photo Photo { get; set; }
     }
 }

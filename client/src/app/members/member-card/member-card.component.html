@@ -1,0 +1,20 @@
+<div class="card mb-4">
+    <div class="card-img-wrapper">
+        <img src="{{member.photoUrl}}" alt="{{member.userName}}" class="card-img-top">
+        <ul class="list-inline member-icons animate text-center mt-1">
+            <li class="list-inline-item">
+                <button class="btn btn-info" routerLink="/members/{{member.userName}}"><i class="fa fa-user"></i> info</button>
+            </li>
+            <li class="list-inline-item">
+                <button class="btn btn-primary"><i class="fa fa-user-plus"></i> dodaj</button>
+            </li>
+        </ul>
+    </div>
+    <div class="card-body p-1">
+        <h6 class="card-title text-center mb-1">
+            <i class="fa fa-user mb-1"></i>
+            {{member.userName}}
+        </h6>
+        
+    </div>
+</div>

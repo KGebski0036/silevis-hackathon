@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { map } from 'rxjs/internal/operators/map';
+import { environment } from 'src/environments/environment';
 import { Pitch } from '../_models/pitch';
 
 
@@ -9,7 +10,7 @@ import { Pitch } from '../_models/pitch';
 })
 export class PitchService
 {
-  baseUrl = 'https://localhost:5001/api/';
+  baseUrl = environment.apiUrl;
 
 
   constructor(private http: HttpClient) { }

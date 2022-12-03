@@ -15,6 +15,45 @@ namespace API.Data
                 this.Pitches.Add(new Pitch(){Id = 13, Description = "Boisko posiada murawę" , Address="Ignacego Daszyńskiego", Name="Boisko na Stoku", CoordLat=50.89149, CoordLon=20.66753});
             }
 
+            if(!this.Events.Any()) {
+                Events.Add(new Event{
+                    Id = 1,
+                    Pitch = this.Pitches.Where(x=>x.Id == 3).FirstOrDefault(),
+                    DateFrom = DateTime.Now,
+                    DateTo = DateTime.Now,
+                    MaxPlayers = 10,
+                });
+                Events.Add(new Event{
+                    Id = 2,
+                    Pitch = this.Pitches.Where(x => x.Id == 2).FirstOrDefault(),
+                    DateFrom = DateTime.Now,
+                    DateTo = DateTime.Now,
+                    MaxPlayers = 10,
+                });
+                Events.Add(new Event{
+                    Id = 3,
+                    Pitch = this.Pitches.Where(x => x.Id == 2).FirstOrDefault(),
+                    DateFrom = DateTime.Now,
+                    DateTo = DateTime.Now,
+                    MaxPlayers = 10,
+                });
+                Events.Add(new Event{
+                    Id = 4,
+                    Pitch = this.Pitches.Where(x => x.Id == 2).FirstOrDefault(),
+                    DateFrom = DateTime.Now,
+                    DateTo = DateTime.Now,
+                    MaxPlayers = 10,
+                });
+                Events.Add(new Event{
+                    Id = 5,
+                    Pitch = this.Pitches.Where(x => x.Id == 2).FirstOrDefault(),
+                    DateFrom = DateTime.Now,
+                    DateTo = DateTime.Now,
+                    MaxPlayers = 10,
+                });
+            }
+
+
             
 
 

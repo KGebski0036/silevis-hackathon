@@ -1,4 +1,5 @@
-import { AfterViewInit, Component, ElementRef, Input, OnInit, ViewChild } from '@angular/core';
+import { AfterViewInit, Component, ElementRef, EventEmitter, Input, OnInit, Output, ViewChild } from '@angular/core';
+import { Router } from '@angular/router';
 
 import  * as L from 'leaflet';
 import { Pitch } from 'src/app/_models/pitch';
@@ -12,30 +13,46 @@ import { PitchService } from 'src/app/_services/pitch.service';
 })
 export class MapViewComponent implements OnInit, AfterViewInit {
 
-  constructor(private pitchService: PitchService) {}
+  constructor(private router: Router, private pitchService: PitchService) {}
 
-  pitches: Pitch[] = this.pitchService.loadedPitches;
-
+  @Output()
+  pitchSelected = new EventEmitter<Pitch>();
+ 
   
   @ViewChild('mapcontain')
   private mapContainer!: ElementRef<HTMLElement>;
-
-
-
 
   private map!: L.Map;
 
 
   ngAfterViewInit(): void {
-    
-    this.map = new L.Map(this.mapContainer.nativeElement);
-
+    this.map = new L.Map(this.mapContainer.nativeElement, {zoomControl:false});
     L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
     attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
     }).addTo(this.map);
+    this.map.setView([50.8702, 20.6302], 14.0);
 
-    this.map.setView([50.8702, 20.6302], 14.0)
+    this.pitchService.getPitches().subscribe((pitches) => {
+      this.addPitches(pitches);
+    })
+  }
+/*
+  onPinClicked(pitch: Pitch) {
+    this.router.navigate(['pitch', 'detail', pitch.id])    
+  }
+*/
 
+  onPitchClicked(pitch: Pitch) {
+    this.pitchSelected.emit(pitch);
+  }
+
+
+  ngOnInit(): void {
+   
+  }
+
+
+  addPitches(pitches: Pitch[]) {
     const icon = L.icon(
       {
         iconUrl: 'assets/location-pin-red.png',
@@ -44,26 +61,12 @@ export class MapViewComponent implements OnInit, AfterViewInit {
         
       });
 
-    let markers: L.Marker[] = this.pitches.map(pin => {
-      
-      let marker = L.marker([pin.coordLat, pin.coordLon], {icon: icon, })
-      marker.addEventListener("click", () => { this.onPinClicked(pin); });
+    let markers: L.Marker[] = pitches.map(pitch => {
+      let marker = L.marker([pitch.coordLat, pitch.coordLon], {icon: icon, })
+      marker.addEventListener("click", () => { this.onPitchClicked(pitch); });
       return marker;
     })
-      
-    
     markers.forEach(marker => marker.addTo(this.map));
-
-
-  }
-
-  onPinClicked(pitch: Pitch) {
-
-  }
-
-
-  ngOnInit(): void {
-    this.pitchService.getPitches().subscribe()
   }
 
 }

@@ -1,3 +1,13 @@
-<p>member-list works!</p>
 
-<app-map-view></app-map-view>
+<app-map-view (pitchSelected)="openDetails($event)"></app-map-view>
+<app-off-canvas-backdrop *ngIf="selectedPitch" (dismiss)="closeDetails()"></app-off-canvas-backdrop>
+<div class="offcanvas offcanvas-end " [ngClass]="{'show' : selectedPitch}" tabindex="-1" id="offcanvas" aria-labelledby="offcanvasLabel" #detailsOffcanvas>
+  <div class="offcanvas-header">
+    <button type="button" (click)="closeDetails()" class="btn-close text-reset" aria-label="Close"></button>
+  </div>
+  <div class="offcanvas-body">
+    <app-pitch-detail [pitch]="selectedPitch"></app-pitch-detail>
+  </div>
+
+    
+</div>

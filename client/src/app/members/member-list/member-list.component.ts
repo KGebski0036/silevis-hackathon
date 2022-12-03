@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
+import { Pitch } from 'src/app/_models/pitch';
 
 
 @Component({
@@ -8,16 +9,22 @@ import { Component, OnInit } from '@angular/core';
 })
 export class MemberListComponent implements OnInit {
 
+
+  selectedPitch?: Pitch;
+
   constructor() { }
 
   ngOnInit(): void {
   }
-  /*
-  createPin(id: number, name: string, lat:number, lon: number){}
 
-  AddPin(pin: Pin)
-  {
-    this.testpinlist.push(pin)
+  closeDetails() {
+    this.selectedPitch = undefined;
   }
-  */
+
+  openDetails(pitch: Pitch) {
+    this.selectedPitch = pitch;
+  }
+
+  
+ 
 }

@@ -11,15 +11,15 @@ export class PitchService
 {
   baseUrl = 'https://localhost:5001/api/';
 
-  loadedPitches: Pitch[] = [];
 
   constructor(private http: HttpClient) { }
 
   getPitches()
   {
-    return this.http.get<Pitch[]>(this.baseUrl + 'pitch').pipe(map(response =>
-    {
-      this.loadedPitches = response;
-    }));
+    return this.http.get<Pitch[]>(this.baseUrl + 'pitch');
+  }
+
+  getPitchById(id: number) {
+    return this.http.get<Pitch>(this.baseUrl + 'pitch/' + id)
   }
 }

@@ -9,6 +9,7 @@ import { MemberDetailComponent } from './members/member-detail/member-detail.com
 import { MemberListComponent } from './members/member-list/member-list.component';
 
 import { AuthGuard } from './_guards/auth.guard';
+import { PitchDetailComponent } from './pitch/pitch-detail/pitch-detail.component';
 
 const routes: Routes = [
   {path: '', component: HomeComponent},
@@ -18,6 +19,7 @@ const routes: Routes = [
     children: [
       {path: 'members', component: MemberListComponent},
       {path: 'members/:id', component: MemberDetailComponent},
+      {path: 'pitch/detail/:id', component: PitchDetailComponent},
       {path: 'lists', component: ListsComponent},
     ]
   },

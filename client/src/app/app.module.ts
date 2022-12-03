@@ -19,6 +19,8 @@ import { NotFoundComponent } from './errors/not-found/not-found.component';
 import { ServerErrorComponent } from './errors/server-error/server-error.component';
 import { AddEventPageComponent } from './pages/addEvent/add-event-page/add-event-page.component';
 import { MapViewComponent } from './map/map-view/map-view.component';
+import { PitchDetailComponent } from './pitch/pitch-detail/pitch-detail.component';
+import { OffCanvasBackdropComponent } from './utils/off-canvas-backdrop/off-canvas-backdrop.component';
 
 
 @NgModule({
@@ -34,7 +36,9 @@ import { MapViewComponent } from './map/map-view/map-view.component';
     TestErrorComponent,
     NotFoundComponent,
     ServerErrorComponent,
-    AddEventPageComponent
+    AddEventPageComponent,
+    PitchDetailComponent,
+    OffCanvasBackdropComponent
   ],
   imports: [
     BrowserAnimationsModule,

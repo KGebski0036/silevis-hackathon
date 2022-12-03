@@ -26,6 +26,7 @@
     width:33.3%;
     float:left;
     padding: 0px 40px;
+    text-align: center;
 }
 
 .column p
@@ -37,4 +38,11 @@
 .column h4
 {
     text-align: center;
+}
+
+svg
+{
+    width: 4em;
+    aspect-ratio: 1 / 1;
+    margin-bottom:40px;
 }

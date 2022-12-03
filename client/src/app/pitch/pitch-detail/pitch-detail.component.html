@@ -3,13 +3,13 @@
         <div class="card-body">
             <h5 class="card-title text-light">{{pitch.name}}</h5>
             <ul class="list-group bg-info text-light list-group-flush ">
-                <li class="list-group-item bg-info text-light"><span class="text-light">Adres:</span> {{pitch.address}}</li>
-                <li class="list-group-item bg-info text-light"><span class="text-light">Opis:</span> {{pitch.description}}</li>
+                <li class="list-group-item bg-info text-light"><span class="text-light">Address:</span> {{pitch.address}}</li>
+                <li class="list-group-item bg-info text-light"><span class="text-light">Description:</span> {{pitch.description}}</li>
             </ul>
         </div>
     </div>
 
     <app-event-card *ngFor="let ev of events" [ev]="ev" [hidePitch]="true"></app-event-card>
 
-    <button class="btn btn-block btn-info m-2" (click)="addEventClicked(pitch.id)">Dodaj wydarzenie</button>
+    <button class="btn btn-block btn-info m-2" (click)="addEventClicked(pitch.id)">Add Event</button>
 </div>

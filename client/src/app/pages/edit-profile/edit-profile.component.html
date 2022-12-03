@@ -1,0 +1,31 @@
+<form class="form" [formGroup]="editProfileForm" (ngSubmit)="onFormSubmit(editProfileForm.getRawValue())">
+    <div class="form-group">
+        <label for="userName">User name:</label>
+        <input type="text" formControlName="userName" id="userName" class="form-control">
+    </div>
+
+    <div class="form-group">
+        <label for="photoUrl">Photo URL:</label>
+        <input type="text" formControlName="photoUrl" id="photoUrl" class="form-control">
+    </div>
+
+    <div class="form-group">
+        <label for="age">Age:</label>
+        <input type="number" formControlName="age" id="age" class="form-control">
+    </div>
+
+    <div class="form-group">
+        <label for="nickname">Nick name:</label>
+        <input type="text" formControlName="nickname" id="nickname" class="form-control">
+    </div>
+
+    <div class="form-group">
+        <label for="gender">Gender:</label>
+        <input type="text" formControlName="gender" id="gender" class="form-control">
+    </div>
+    <div class="form-group">
+        <label for="country">Country:</label>
+        <input type="text" formControlName="country" id="country" class="form-control">
+    </div>
+    <button type="submit" class="btn btn-primary mt-4" [disabled]="!editProfileForm.valid">Submit</button> 
+</form>

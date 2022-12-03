@@ -1,12 +1,17 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+
 import { GameEvent } from '../_models/event';
+
+import { environment } from 'src/environments/environment';
+
 
 
 @Injectable({
   providedIn: 'root'
 })
 export class EventService {
+
 
   baseUrl = 'https://localhost:5001/api/event';
 

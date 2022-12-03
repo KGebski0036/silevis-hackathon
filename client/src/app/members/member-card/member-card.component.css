@@ -1,0 +1,13 @@
+.card:hover img{
+
+    transition-duration: 500ms;
+    transition-timing-function: ease-out;
+    opacity: 0.6;
+}
+.card img {
+    transition-duration: 500ms;
+    transition-timing-function: ease-out;
+}
+.card-img-wrapper{
+    overflow: hidden;
+}

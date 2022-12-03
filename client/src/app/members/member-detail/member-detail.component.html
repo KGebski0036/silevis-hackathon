@@ -1,1 +1,23 @@
-<p>member-detail works!</p>
+<div class="row" *ngIf="member">
+    <div class="col-4">
+        <div class="card">
+            <img src="{{member.photoUrl || './assets/logoTeamFInder2.png'}}" alt="{{member.userName}}"
+                class="card-img-top img-thumbnail">
+            <div class="card-body">
+                <div>
+                    <strong>Imię:</strong>
+                    <p>{{member.userName}}</p>
+                    <strong>Wiek:</strong>
+                    <p>{{member.age}}</p>
+                    <strong *ngIf="member.nickname">Nick:</strong>
+                    <p>{{member.nickname}}</p>
+                </div>
+            </div>
+            <div class="card-footer">
+                <div class="d-flex btn-group">
+                    <button class="btn btn-success">Dodaj do znajomych <i class="fa fa-user-plus"></i></button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

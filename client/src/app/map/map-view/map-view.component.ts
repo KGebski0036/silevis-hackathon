@@ -2,6 +2,7 @@ import { AfterViewInit, Component, ElementRef, EventEmitter, Input, OnInit, Outp
 import { Router } from '@angular/router';
 
 import  * as L from 'leaflet';
+import { reduce } from 'rxjs';
 import { Pitch } from 'src/app/_models/pitch';
 import { PitchService } from 'src/app/_services/pitch.service';
 
@@ -66,7 +67,7 @@ export class MapViewComponent implements OnInit, AfterViewInit {
       marker.addEventListener("click", () => { this.onPitchClicked(pitch); });
       return marker;
     })
-    markers.forEach(marker => marker.addTo(this.map));
+    markers.forEach(marker => marker.addTo(this.map)); /*bindPopup() do badge'a przy ikonach*/
   }
 
 }

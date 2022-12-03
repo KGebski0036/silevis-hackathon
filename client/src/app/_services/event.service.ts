@@ -7,13 +7,15 @@ import { GameEvent } from '../_models/event';
   providedIn: 'root'
 })
 export class EventService {
+
   baseUrl = 'https://localhost:5001/api/event';
+
 
   
   constructor(private http: HttpClient) { }
 
-  getEvents(model: any){
-
+  getEvents(){
+    return this.http.get<Event[]>(this.baseUrl);
   }
 
   addEvent(event: GameEvent) {

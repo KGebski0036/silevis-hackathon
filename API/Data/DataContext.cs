@@ -14,6 +14,7 @@ namespace API.Data
                 this.Pitches.Add(new Pitch(){Id = 12, Description = "Boisko posiada murawę" , Address="Florentyny Malskiej 39", Name="Boisko Kampusu Politechniki", CoordLat=50.87947, CoordLon=20.64417});
                 this.Pitches.Add(new Pitch(){Id = 13, Description = "Boisko posiada murawę" , Address="Ignacego Daszyńskiego", Name="Boisko na Stoku", CoordLat=50.89149, CoordLon=20.66753});
 
+
                 Events.Add(new Event{
                     Id = 1,
                     Pitch = this.Pitches.Where(x=>x.Id == 13).FirstOrDefault(),
@@ -49,7 +50,6 @@ namespace API.Data
                     DateTo = DateTime.Now,
                     MaxPlayers = 10,
                 });
-
             this.SaveChanges();
             */
         }

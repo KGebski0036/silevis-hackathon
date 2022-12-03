@@ -1,19 +1,22 @@
 <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-primary">
     <div class="container">
-        <a class="navbar-brand" routerLink="/" routerLinkActive="active"><img width="170%" src="assets/logoTeamFInder2.png"></a>
+        <a class="navbar-brand" routerLink="/" routerLinkActive="active"><img width="130%" src="assets/logoTeamFInder2.png"></a>
 
         <ul class="navbar-nav me-auto mb-2 mb-md-0">
             <ng-container *ngIf="accountService.currentUser$ | async">
                 <li class="nav-item">
-                    <a class="nav-link text-" routerLink="/members" routerLinkActive="active">Inni użytkownicy</a>
+                    <a class="nav-link text-" routerLink="/members" routerLinkActive="active">Other Users</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" routerLink="/lists" routerLinkActive="active">Boiska w okolicy</a>
+                    <a class="nav-link" routerLink="/lists" routerLinkActive="active">Nearby Pitches</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" routerLink="events" routerLinkActive="active">Events List</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" routerLink="learn" routerLinkActive="active">What is Team Finder?</a>
                 </li>
             </ng-container>
-            <li class="nav-item">
-                <a class="nav-link " routerLink="/errors" routerLinkActive="active">Errors</a>
-            </li>
         </ul>
 
         <div class="dropdown" *ngIf="(accountService.currentUser$  | async) as user" dropdown>

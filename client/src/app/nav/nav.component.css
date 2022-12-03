@@ -18,7 +18,7 @@
 .navbar-brand
 {
     padding:0;
-    width:10%;
+    width:20%;
     margin-right:14%;
     border:none;
 }
@@ -49,7 +49,7 @@
 
 .nav-link
 {
-    width: 250px;
+    width: fit-content;
     text-decoration:none;
     color:white;
 }

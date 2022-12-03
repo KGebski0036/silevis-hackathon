@@ -21,6 +21,8 @@ import { MapViewComponent } from './map/map-view/map-view.component';
 import { PitchDetailComponent } from './pitch/pitch-detail/pitch-detail.component';
 import { OffCanvasBackdropComponent } from './utils/off-canvas-backdrop/off-canvas-backdrop.component';
 import { PitchMapComponent } from './pitch/pitch-map/pitch-map.component';
+import { EventListComponent } from './pages/eventList/event-list/event-list.component';
+import { LearnMoreComponent } from './pages/learnMore/learn-more/learn-more.component';
 
 
 @NgModule({
@@ -38,7 +40,9 @@ import { PitchMapComponent } from './pitch/pitch-map/pitch-map.component';
     AddEventPageComponent,
     PitchDetailComponent,
     OffCanvasBackdropComponent,
-    PitchMapComponent
+    PitchMapComponent,
+    EventListComponent,
+    LearnMoreComponent
   ],
   imports: [
     BrowserAnimationsModule,

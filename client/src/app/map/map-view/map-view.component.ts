@@ -1,7 +1,8 @@
 import { AfterViewInit, Component, ElementRef, Input, OnInit, ViewChild } from '@angular/core';
 
 import  * as L from 'leaflet';
-import { Pin } from 'src/app/_models/pin';
+import { Pitch } from 'src/app/_models/pitch';
+import { PitchService } from 'src/app/_services/pitch.service';
 
 
 @Component({
@@ -11,23 +12,9 @@ import { Pin } from 'src/app/_models/pin';
 })
 export class MapViewComponent implements OnInit, AfterViewInit {
 
-  @Input()
-  pins: Pin[] = [
-    {
-      id: 0, 
-      coordLat: 50.8702,
-      coordLon: 20.6302,
-      name: "Kielce centrum",
-      description: "test test",
-    },
-    {
-      id: 1,
-      coordLat: 50.87605,
-      coordLon: 20.63903,
-      name: "ZSE",
-      description: "aa"
-    }
-];
+  constructor(private pitchService: PitchService) {}
+
+  pitches: Pitch[] = this.pitchService.loadedPitches;
 
   
   @ViewChild('mapcontain')
@@ -38,7 +25,7 @@ export class MapViewComponent implements OnInit, AfterViewInit {
 
   private map!: L.Map;
 
-  constructor() { }
+
   ngAfterViewInit(): void {
     
     this.map = new L.Map(this.mapContainer.nativeElement);
@@ -57,7 +44,7 @@ export class MapViewComponent implements OnInit, AfterViewInit {
         
       });
 
-    let markers: L.Marker[] = this.pins.map(pin => {
+    let markers: L.Marker[] = this.pitches.map(pin => {
       
       let marker = L.marker([pin.coordLat, pin.coordLon], {icon: icon, })
       marker.addEventListener("click", () => { this.onPinClicked(pin); });
@@ -70,13 +57,13 @@ export class MapViewComponent implements OnInit, AfterViewInit {
 
   }
 
-  onPinClicked(pin: Pin) {
-    alert(pin.name);
+  onPinClicked(pitch: Pitch) {
+
   }
 
 
   ngOnInit(): void {
-
+    this.pitchService.getPitches().subscribe()
   }
 
 }

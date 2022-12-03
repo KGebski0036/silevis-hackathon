@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Pin } from 'src/app/_models/pin';
+
 
 @Component({
   selector: 'app-member-list',
@@ -9,8 +9,6 @@ import { Pin } from 'src/app/_models/pin';
 export class MemberListComponent implements OnInit {
 
   constructor() { }
-
-  testpinlist: Pin[] = [];
 
   ngOnInit(): void {
   }

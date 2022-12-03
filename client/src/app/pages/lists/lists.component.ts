@@ -1,7 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { Observable } from 'rxjs/internal/Observable';
-import { Pin } from '../../_models/pin';
-import { PinService } from '../../_services/pin.service';
 
 @Component({
   selector: 'app-lists',
@@ -10,12 +7,9 @@ import { PinService } from '../../_services/pin.service';
 })
 export class ListsComponent implements OnInit {
 
-  pins$!: Observable<Pin[]>;
-
-  constructor(private pinService: PinService) { }
+  constructor() { }
 
   ngOnInit(): void {
-    this.pins$ = this.pinService.getPins();
   }
 
 }

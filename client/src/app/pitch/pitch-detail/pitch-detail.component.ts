@@ -1,5 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { ActivatedRoute, ParamMap } from '@angular/router';
+import { ActivatedRoute, ParamMap, Router, RouteReuseStrategy } from '@angular/router';
 import { GameEvent } from 'src/app/_models/event';
 import { Pitch } from 'src/app/_models/pitch';
 import { PitchService } from 'src/app/_services/pitch.service';
@@ -17,7 +17,11 @@ export class PitchDetailComponent {
   @Input()
   events: GameEvent[] = [];
 
-  constructor() {
+  addEventClicked(pitchId: number) {
+    this.router.navigateByUrl('/events/add/' + pitchId);
+  }
+
+  constructor(private router: Router) {
   }
 
 

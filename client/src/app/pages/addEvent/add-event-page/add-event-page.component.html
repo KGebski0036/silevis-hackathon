@@ -1,6 +1,7 @@
+<div *ngIf="pitchId != null">
 <h3>Add new Event</h3>
 
-<form [formGroup]="addEvent">
+<form [formGroup]="addEvent" (ngSubmit)="onSubmit()">
 
     <label for="dateOfEvent">When do You want to play</label>
     <input id="dateOfEvent" type="date" formControlName="dateOfEvent">
@@ -9,9 +10,10 @@
     <input id="timeOfEvent" type="time" formControlName="timeOfEvent">
 
     <label for="playersRequired">How many players do you need</label>
-    <input id="playersRequired" type="number" formControlName="playersRequired">
+    <input id="playersRequired" type="number" formControlName="maxPlayers">
 
     <input id="submitEvent" type="submit" formControlName="submitEvent">
 
 </form>
+</div>
 

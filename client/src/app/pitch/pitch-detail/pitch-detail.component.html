@@ -14,14 +14,14 @@
             <h5>Wydarzenie #{{ev.id}}</h5>
         </div>
         <div class="card-body">
+            <h6 class="text-info" *ngIf="ev.participants">{{ev.participants.length}} dołączających</h6>
+            <h6 class="text-info" *ngIf="!ev.participants">brak dołączających</h6>
             <h6>Opis</h6>
             <p>{{ev.description}}</p>
-
-            <button class="btn btn-info">Info</button>
             <button class="btn btn-success">Dołącz!</button>
         </div>
     </div>
 
 
-    <button class="btn btn-block btn-info m-2">Dodaj wydarzenie</button>
+    <button class="btn btn-block btn-info m-2" (click)="addEventClicked(pitch.id)">Dodaj wydarzenie</button>
 </div>

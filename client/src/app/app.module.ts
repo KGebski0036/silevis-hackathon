@@ -11,7 +11,6 @@ import { HomeComponent } from './home/home.component';
 import { RegisterComponent } from './pages/register/register.component';
 import { MemberListComponent } from './members/member-list/member-list.component';
 import { MemberDetailComponent } from './members/member-detail/member-detail.component';
-import { ListsComponent } from './pages/lists/lists.component';
 import { SharedModule } from './_modules/shared.module';
 import { TestErrorComponent } from './errors/test-error/test-error.component';
 import { ErrorInterceptor } from './_interceptors/error.interceptor';
@@ -31,7 +30,6 @@ import { OffCanvasBackdropComponent } from './utils/off-canvas-backdrop/off-canv
     RegisterComponent,
     MemberListComponent,
     MemberDetailComponent,
-    ListsComponent,
     MapViewComponent,
     TestErrorComponent,
     NotFoundComponent,

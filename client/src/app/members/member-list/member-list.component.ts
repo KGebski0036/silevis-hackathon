@@ -8,23 +8,7 @@ import { Pitch } from 'src/app/_models/pitch';
   styleUrls: ['./member-list.component.css']
 })
 export class MemberListComponent implements OnInit {
-
-
-  selectedPitch?: Pitch;
-
-  constructor() { }
-
-  ngOnInit(): void {
+  ngOnInit(): void
+  {
   }
-
-  closeDetails() {
-    this.selectedPitch = undefined;
-  }
-
-  openDetails(pitch: Pitch) {
-    this.selectedPitch = pitch;
-  }
-
-  
- 
 }

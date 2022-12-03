@@ -11,7 +11,7 @@ import { PitchService } from 'src/app/_services/pitch.service';
 export class PitchMapComponent implements OnInit {
 
   selectedPitch?: Pitch;
-  selectedPitchEvents?: GameEvent[];
+  selectedPitchEvents: GameEvent[] = [];
 
   constructor(private pitchService: PitchService) { }
 

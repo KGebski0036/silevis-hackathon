@@ -20,6 +20,15 @@ namespace API.Controllers
             _context = context;
         }
 
+        [HttpPost]
+        public async Task<ActionResult> PostEvent([FromBody] Event ev)
+        {
+            await _context.Events.AddAsync(ev);
+            await _context.SaveChangesAsync();
+            return Ok(ev);
+        }
+
+
         [HttpGet]
         public async Task<ActionResult<IEnumerable<Event>>> GetEvents()
         {

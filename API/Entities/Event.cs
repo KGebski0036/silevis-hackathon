@@ -15,5 +15,6 @@ namespace API.Entities
 
         public int PitchId { get; set; }
         public Pitch Pitch { get; set; }
+        public string Description { get; set; }
     }
 }

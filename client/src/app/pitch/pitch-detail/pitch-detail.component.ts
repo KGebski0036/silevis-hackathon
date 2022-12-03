@@ -15,7 +15,7 @@ export class PitchDetailComponent {
   pitch?: Pitch;
 
   @Input()
-  events?: GameEvent[];
+  events: GameEvent[] = [];
 
   constructor() {
   }

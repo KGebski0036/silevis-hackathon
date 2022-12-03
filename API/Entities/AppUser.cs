@@ -15,9 +15,9 @@ namespace API.Entities
         public List<Photo> Photos { get; set; } = new List<Photo>();
         public string Gender { get; set; }
         public string Country { get; set; }
-        public int GetAge()
-        {
-            return DateOfBirth.CalculateAge();
-        }
+        //public int GetAge()
+        //{
+        //    return DateOfBirth.CalculateAge();
+        //}
     }
 }

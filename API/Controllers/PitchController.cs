@@ -5,6 +5,8 @@ using System.Threading.Tasks;
 using API.Data;
 using API.DTOs;
 using API.Entities;
+using AutoMapper;
+using AutoMapper.QueryableExtensions;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
@@ -14,19 +16,35 @@ namespace API.Controllers
     public class PitchController : BaseApiController
     {
         private readonly DataContext _context;
-        public PitchController(DataContext context)
+        private readonly IMapper _mapper;
+        public PitchController(DataContext context, IMapper mapper)
         {
+            _mapper = mapper;
             _context = context;
         }
 
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<Pitch>>> GetPitch()
+        public async Task<ActionResult<IEnumerable<Pitch>>> GetPitches()
         {
             var Pitch = await _context.Pitches.ToListAsync();
 
             return Pitch;
         }
 
+        [HttpGet("{id}")]
+
+        public async Task<ActionResult<PitchDto>> GetPitch(int pitchId)
+        {
+            return await _context.Pitches
+                .Where(p => p.Id == pitchId)
+                .ProjectTo<PitchDto>(_mapper.ConfigurationProvider).SingleOrDefaultAsync();
+        }
+        [HttpGet("events/{id}")]
+        public async Task<ActionResult<IEnumerable<Event>>> GetEventsForPitch(int pitchId)
+        {
+            return (await _context.Pitches.Where(p => p.Id == pitchId).FirstOrDefaultAsync()).Events.ToList();
+        }
+            
         [HttpPost]
         public async Task<ActionResult<PitchDto>> AddPitch(PitchDto newPitch)
         {

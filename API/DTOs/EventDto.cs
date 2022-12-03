@@ -1,11 +1,8 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+﻿using API.Entities;
 
-namespace API.Entities
+namespace API.DTOs
 {
-    public class Event
+    public class EventDto
     {
         public int Id { get; set; }
         public int PinId { get; set; }
@@ -14,6 +11,5 @@ namespace API.Entities
         public int MaxPlayers { get; set; }
         public DateTime DateFrom { get; set; }
         public DateTime DateTo { get; set; }
-
     }
 }
